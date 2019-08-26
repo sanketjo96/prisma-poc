@@ -52,6 +52,8 @@ type Complaint {
   Customer_Complaint: String
   Investigation: String
   Action_Taken: String
+  Settlement_Date: String
+  Settlement_Month: String
 }
 
 type ComplaintConnection {
@@ -101,6 +103,8 @@ input ComplaintCreateInput {
   Customer_Complaint: String
   Investigation: String
   Action_Taken: String
+  Settlement_Date: String
+  Settlement_Month: String
 }
 
 type ComplaintEdge {
@@ -189,6 +193,10 @@ enum ComplaintOrderByInput {
   Investigation_DESC
   Action_Taken_ASC
   Action_Taken_DESC
+  Settlement_Date_ASC
+  Settlement_Date_DESC
+  Settlement_Month_ASC
+  Settlement_Month_DESC
 }
 
 type ComplaintPreviousValues {
@@ -232,6 +240,8 @@ type ComplaintPreviousValues {
   Customer_Complaint: String
   Investigation: String
   Action_Taken: String
+  Settlement_Date: String
+  Settlement_Month: String
 }
 
 type ComplaintSubscriptionPayload {
@@ -292,6 +302,8 @@ input ComplaintUpdateInput {
   Customer_Complaint: String
   Investigation: String
   Action_Taken: String
+  Settlement_Date: String
+  Settlement_Month: String
 }
 
 input ComplaintUpdateManyMutationInput {
@@ -334,6 +346,8 @@ input ComplaintUpdateManyMutationInput {
   Customer_Complaint: String
   Investigation: String
   Action_Taken: String
+  Settlement_Date: String
+  Settlement_Month: String
 }
 
 input ComplaintWhereInput {
@@ -897,6 +911,34 @@ input ComplaintWhereInput {
   Action_Taken_not_starts_with: String
   Action_Taken_ends_with: String
   Action_Taken_not_ends_with: String
+  Settlement_Date: String
+  Settlement_Date_not: String
+  Settlement_Date_in: [String!]
+  Settlement_Date_not_in: [String!]
+  Settlement_Date_lt: String
+  Settlement_Date_lte: String
+  Settlement_Date_gt: String
+  Settlement_Date_gte: String
+  Settlement_Date_contains: String
+  Settlement_Date_not_contains: String
+  Settlement_Date_starts_with: String
+  Settlement_Date_not_starts_with: String
+  Settlement_Date_ends_with: String
+  Settlement_Date_not_ends_with: String
+  Settlement_Month: String
+  Settlement_Month_not: String
+  Settlement_Month_in: [String!]
+  Settlement_Month_not_in: [String!]
+  Settlement_Month_lt: String
+  Settlement_Month_lte: String
+  Settlement_Month_gt: String
+  Settlement_Month_gte: String
+  Settlement_Month_contains: String
+  Settlement_Month_not_contains: String
+  Settlement_Month_starts_with: String
+  Settlement_Month_not_starts_with: String
+  Settlement_Month_ends_with: String
+  Settlement_Month_not_ends_with: String
   AND: [ComplaintWhereInput!]
   OR: [ComplaintWhereInput!]
   NOT: [ComplaintWhereInput!]

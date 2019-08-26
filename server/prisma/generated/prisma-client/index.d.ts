@@ -181,7 +181,11 @@ export type ComplaintOrderByInput =
   | "Investigation_ASC"
   | "Investigation_DESC"
   | "Action_Taken_ASC"
-  | "Action_Taken_DESC";
+  | "Action_Taken_DESC"
+  | "Settlement_Date_ASC"
+  | "Settlement_Date_DESC"
+  | "Settlement_Month_ASC"
+  | "Settlement_Month_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -750,6 +754,34 @@ export interface ComplaintWhereInput {
   Action_Taken_not_starts_with?: Maybe<String>;
   Action_Taken_ends_with?: Maybe<String>;
   Action_Taken_not_ends_with?: Maybe<String>;
+  Settlement_Date?: Maybe<String>;
+  Settlement_Date_not?: Maybe<String>;
+  Settlement_Date_in?: Maybe<String[] | String>;
+  Settlement_Date_not_in?: Maybe<String[] | String>;
+  Settlement_Date_lt?: Maybe<String>;
+  Settlement_Date_lte?: Maybe<String>;
+  Settlement_Date_gt?: Maybe<String>;
+  Settlement_Date_gte?: Maybe<String>;
+  Settlement_Date_contains?: Maybe<String>;
+  Settlement_Date_not_contains?: Maybe<String>;
+  Settlement_Date_starts_with?: Maybe<String>;
+  Settlement_Date_not_starts_with?: Maybe<String>;
+  Settlement_Date_ends_with?: Maybe<String>;
+  Settlement_Date_not_ends_with?: Maybe<String>;
+  Settlement_Month?: Maybe<String>;
+  Settlement_Month_not?: Maybe<String>;
+  Settlement_Month_in?: Maybe<String[] | String>;
+  Settlement_Month_not_in?: Maybe<String[] | String>;
+  Settlement_Month_lt?: Maybe<String>;
+  Settlement_Month_lte?: Maybe<String>;
+  Settlement_Month_gt?: Maybe<String>;
+  Settlement_Month_gte?: Maybe<String>;
+  Settlement_Month_contains?: Maybe<String>;
+  Settlement_Month_not_contains?: Maybe<String>;
+  Settlement_Month_starts_with?: Maybe<String>;
+  Settlement_Month_not_starts_with?: Maybe<String>;
+  Settlement_Month_ends_with?: Maybe<String>;
+  Settlement_Month_not_ends_with?: Maybe<String>;
   AND?: Maybe<ComplaintWhereInput[] | ComplaintWhereInput>;
   OR?: Maybe<ComplaintWhereInput[] | ComplaintWhereInput>;
   NOT?: Maybe<ComplaintWhereInput[] | ComplaintWhereInput>;
@@ -796,6 +828,8 @@ export interface ComplaintCreateInput {
   Customer_Complaint?: Maybe<String>;
   Investigation?: Maybe<String>;
   Action_Taken?: Maybe<String>;
+  Settlement_Date?: Maybe<String>;
+  Settlement_Month?: Maybe<String>;
 }
 
 export interface ComplaintUpdateInput {
@@ -838,6 +872,8 @@ export interface ComplaintUpdateInput {
   Customer_Complaint?: Maybe<String>;
   Investigation?: Maybe<String>;
   Action_Taken?: Maybe<String>;
+  Settlement_Date?: Maybe<String>;
+  Settlement_Month?: Maybe<String>;
 }
 
 export interface ComplaintUpdateManyMutationInput {
@@ -880,6 +916,8 @@ export interface ComplaintUpdateManyMutationInput {
   Customer_Complaint?: Maybe<String>;
   Investigation?: Maybe<String>;
   Action_Taken?: Maybe<String>;
+  Settlement_Date?: Maybe<String>;
+  Settlement_Month?: Maybe<String>;
 }
 
 export interface ComplaintSubscriptionWhereInput {
@@ -944,6 +982,8 @@ export interface Complaint {
   Customer_Complaint?: String;
   Investigation?: String;
   Action_Taken?: String;
+  Settlement_Date?: String;
+  Settlement_Month?: String;
 }
 
 export interface ComplaintPromise extends Promise<Complaint>, Fragmentable {
@@ -987,6 +1027,8 @@ export interface ComplaintPromise extends Promise<Complaint>, Fragmentable {
   Customer_Complaint: () => Promise<String>;
   Investigation: () => Promise<String>;
   Action_Taken: () => Promise<String>;
+  Settlement_Date: () => Promise<String>;
+  Settlement_Month: () => Promise<String>;
 }
 
 export interface ComplaintSubscription
@@ -1032,6 +1074,8 @@ export interface ComplaintSubscription
   Customer_Complaint: () => Promise<AsyncIterator<String>>;
   Investigation: () => Promise<AsyncIterator<String>>;
   Action_Taken: () => Promise<AsyncIterator<String>>;
+  Settlement_Date: () => Promise<AsyncIterator<String>>;
+  Settlement_Month: () => Promise<AsyncIterator<String>>;
 }
 
 export interface ComplaintNullablePromise
@@ -1077,6 +1121,8 @@ export interface ComplaintNullablePromise
   Customer_Complaint: () => Promise<String>;
   Investigation: () => Promise<String>;
   Action_Taken: () => Promise<String>;
+  Settlement_Date: () => Promise<String>;
+  Settlement_Month: () => Promise<String>;
 }
 
 export interface ComplaintConnection {
@@ -1240,6 +1286,8 @@ export interface ComplaintPreviousValues {
   Customer_Complaint?: String;
   Investigation?: String;
   Action_Taken?: String;
+  Settlement_Date?: String;
+  Settlement_Month?: String;
 }
 
 export interface ComplaintPreviousValuesPromise
@@ -1285,6 +1333,8 @@ export interface ComplaintPreviousValuesPromise
   Customer_Complaint: () => Promise<String>;
   Investigation: () => Promise<String>;
   Action_Taken: () => Promise<String>;
+  Settlement_Date: () => Promise<String>;
+  Settlement_Month: () => Promise<String>;
 }
 
 export interface ComplaintPreviousValuesSubscription
@@ -1330,6 +1380,8 @@ export interface ComplaintPreviousValuesSubscription
   Customer_Complaint: () => Promise<AsyncIterator<String>>;
   Investigation: () => Promise<AsyncIterator<String>>;
   Action_Taken: () => Promise<AsyncIterator<String>>;
+  Settlement_Date: () => Promise<AsyncIterator<String>>;
+  Settlement_Month: () => Promise<AsyncIterator<String>>;
 }
 
 /*

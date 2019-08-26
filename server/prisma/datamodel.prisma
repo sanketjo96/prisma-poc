@@ -39,4 +39,6 @@ type Complaint {
   Customer_Complaint: String
   Investigation: String
   Action_Taken: String
+  Settlement_Date: String
+  Settlement_Month: String
 }

@@ -1,0 +1,111 @@
+import React, { Component } from 'react';
+import FileUploadControl from './fileUploadControl';
+import openSocket from 'socket.io-client';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { withStyles } from '@material-ui/styles';
+const socket = openSocket('http://localhost:3002');
+const CHUNKSIZE = 1000;
+
+const styles = {
+    root: {
+        'marginTop': '5rem',
+        display: 'flex',
+        justifyContent: 'center',
+    },
+    controller: {
+        width: '50rem'
+    },
+    progress: {
+        marginTop: '3rem'
+    }
+};
+
+class FileUpload extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            progress: 0,
+            dataChunk: null
+        }
+    }
+
+    getnextChunk = (startIndex = this.state.nextChunkStart) => {
+        // Find chunk end index
+        const possibleChunkEnd = startIndex + CHUNKSIZE;
+        const chunkEnd = (possibleChunkEnd < this.fileData.length)
+            ? possibleChunkEnd
+            : this.fileData.length
+        ;
+
+        // Find chunk data
+        const dataChunk = this.fileData.slice(startIndex, chunkEnd);
+
+        return {
+            nextChunkStart: chunkEnd + 1,
+            dataChunk
+        };
+    }
+
+    componentDidMount() {
+        socket.on('getNextChunk', () => {
+            const chunkParams = this.getnextChunk();
+            console.log(chunkParams);
+            if (chunkParams.dataChunk.length) {
+                this.setState({
+                    progress: (chunkParams.nextChunkStart * 100) / this.totalRecords,
+                    nextChunkStart: chunkParams.nextChunkStart,
+                    dataChunk: chunkParams.dataChunk
+                }, () => {
+                    socket.emit('postNextFileChunk', this.state.chunkStart, this.state.dataChunk);
+                });
+            } else {
+                this.fileData = null;
+                this.setState({
+                    progress: 0
+                });
+            }
+        });
+        socket.on('chunkInsertErr', (e) => console.log(e));
+    }
+
+    componentDidUnmount() {
+        socket.off()
+    }
+
+    getFileData = (fileData) => {
+        this.fileData = fileData.data.filter((item) => parseInt(item['No_of_Complaints'], 10) > 0);
+        this.totalRecords = this.fileData.length;
+        const chunkParams = this.getnextChunk(0);
+        console.log(this.totalRecords);
+        console.log(chunkParams);
+        this.setState({
+            nextChunkStart: chunkParams.nextChunkStart,
+            dataChunk: chunkParams.dataChunk
+        }, () => {
+            socket.emit('postNextFileChunk', this.state.chunkStart, this.state.dataChunk);
+        });
+    }
+
+    render() {
+        const { classes } = this.props;
+        return (
+            <div className={classes.root}>
+                <div className={classes.controller}>
+                    <FileUploadControl
+                        handleFileData={this.getFileData}>
+                    </FileUploadControl>
+                    {
+                        this.fileData 
+                        && (
+                            <div className={classes.progress}>
+                                <LinearProgress variant="determinate" value={this.state.progress} />
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        );
+    }
+}
+
+export default withStyles(styles)(FileUpload);

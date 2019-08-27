@@ -58,5 +58,6 @@ type DashBoard {
      Dealer_Wise: [ComplaintAggregate]
      Dealer_City_Wise: [ComplaintAggregate]
      Model_Wise: [ComplaintAggregate]
+     Production_Month_Wise: [ComplaintAggregate]
      Complaint_Month_Wise: [ComplaintAggregate]
 }

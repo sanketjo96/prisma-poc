@@ -6,10 +6,9 @@ export default function DataTable(props) {
   return (
     <div style={{ maxWidth: "100%" }}>
         <MaterialTable
-          options={tableConfig.option}
           columns={tableConfig.columns}
           data={tableConfig.data}
-          title="sanket"
+          title={tableConfig.label}
         />
       </div>
   );

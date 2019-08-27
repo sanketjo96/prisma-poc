@@ -34,6 +34,9 @@ const resolver = {
         },
         Complaint_Month_Wise: (root, args, context) => {
             return groupByHelper(root, 'Complaint_Month')
+        },
+        Production_Month_Wise: (root, args, context) => {
+            return groupByHelper(root, 'Production_Month')
         }
     }
 };

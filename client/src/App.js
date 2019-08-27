@@ -1,34 +1,30 @@
 import React from 'react';
 import './App.css';
 import ButtonAppBar from './features/appbar/appbar';
-import DataTable from './components/DataTable';
-import Search from './components/search/Search'
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 
-const tableConfig = {
-  columns: [
-    { title: "Adı", field: "name" },
-    { title: "Soyadı", field: "surname" },
-    { title: "Doğum Yılı", field: "birthYear", type: "numeric" },
-    {
-      title: "Doğum Yeri",
-      field: "birthCity",
-      lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
-    }
-  ],
-  data: [
-    { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 }
-  ],
-  option: {
-    search: false
-  }
-}
+import Dashboard from './features/dashboard';
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000'
+})
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+})
 
 function App() {
   return (
-    <div className="App">
-      <ButtonAppBar></ButtonAppBar>
-      <Search></Search>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <ButtonAppBar></ButtonAppBar>
+        <Dashboard></Dashboard>
+      </div>
+    </ApolloProvider>
   );
 }
 

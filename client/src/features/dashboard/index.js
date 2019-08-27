@@ -1,20 +1,26 @@
 import React from 'react';
 import Search from '../../components/search/Search';
+import { makeStyles } from '@material-ui/styles';
 import DashBoardGrid from './DashboardGrird';
+import ComplaintChart from './ComplaintChart';
 import { searchConfig } from '../../config/searchConfig';
 import { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { DASHBOARD_QUERY } from '../../queries/getDashboard';
 
+const useStyles = makeStyles({
+    root: {
+        margin: '0.5rem 1rem'
+    },
+});
+
 function Dashboard() {
     const [cgroupCode, setcgroupCode] = useState(searchConfig.cgroupCode.selected);
-    const [model, setModel] = useState([searchConfig.modelSelect.selected])
+    const classes = useStyles();
 
     const handleFilterChanges = (data) => {
         if (data.cgroupCode) {
             setcgroupCode(data.cgroupCode)
-        } else if (data.model) {
-            setModel(data.model)
         }
     }
 
@@ -23,16 +29,17 @@ function Dashboard() {
     });
 
     if (loading) return <div>Fetching</div>;
-    if (error) return  <div>Error {error}</div>;
+    if (error) return <div>Error {error}</div>;
 
     return (
-        <div className='app-dashboard'>
+        <div className={classes.root}>
             <Search
-                selected={{ cgroupCode, model }}
+                selected={{ cgroupCode }}
                 searchConfig={searchConfig}
                 changeFilters={handleFilterChanges}
             ></Search>
-            <DashBoardGrid data={data.dashboard}/>
+            <ComplaintChart data={data.dashboard.Complaint_Month_Wise}></ComplaintChart>
+            <DashBoardGrid data={data.dashboard} />
         </div>
     )
 }

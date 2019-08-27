@@ -9,16 +9,13 @@ import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
     root: {
-        display: 'flex',
-        flexWrap: 'wrap',
+        textAlign: 'left',
+        margin: '10px 0px'
     },
     formControl: {
         margin: theme.spacing.unit,
         minWidth: 120,
         maxWidth: 300,
-    },
-    noLabel: {
-        marginTop: theme.spacing.unit * 3,
     },
 });
 
@@ -34,7 +31,7 @@ class Search extends Component {
     render() {
         const { classes, searchConfig, selected } = this.props;
         return (
-            <div className="search-bar">
+            <div className={classes.root}>
                 <FormControl className={classes.formControl}>
                     <InputLabel>{searchConfig.cgroupCode.title}</InputLabel>
                     <Select

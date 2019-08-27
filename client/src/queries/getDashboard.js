@@ -19,6 +19,9 @@ const DASHBOARDFRAGMENT = gql`
 export const DASHBOARD_QUERY = gql`
   query dashboard($Complaint_Group: String!){
     dashboard(Complaint_Group: $Complaint_Group) {
+        Complaint_Month_Wise {
+            ...NamesFeild
+        }
         Dealer_Wise {
             ...NamesFeild
         }

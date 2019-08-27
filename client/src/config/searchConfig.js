@@ -4,8 +4,8 @@ export const searchConfig = {
         selected: 'HB40019',
         data: [
             'HB40019',
-            'CB40019',
-            'EB31011'
+            'HA40019',
+            'HB40049'
         ]
     },
     modelSelect: {

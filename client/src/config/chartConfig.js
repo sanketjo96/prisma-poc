@@ -1,3 +1,8 @@
+export const chartOptions = {
+  maintainAspectRatio: false,
+  responsive: true,
+}
+
 export const chartConfig = {
     responsive: true,
     datasets: [

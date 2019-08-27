@@ -1,5 +1,6 @@
 type Query {
     complaints: [Complaint!]!
+    dashboard(Complaint_Group: String, models: [String]): DashBoard
 }
 
 type Complaint {
@@ -37,12 +38,25 @@ type Complaint {
     Part_Rate: String
     Actual_Labour_Charge: String
     Miscellaneous_Charge: String
-    Special_Labour_Charcjzo6dujz006y0710twvx5b08ges: String
-    Total_Expenses: Strcjzo6dujz006y0710twvx5b08ing
-    Credit_Amount: Stricjzo6dujz006y0710twvx5b08ng
-    Customer_Complaint:cjzo6dujz006y0710twvx5b08 String
+    Special_Labour_Charcjges: String
+    Total_Expenses: String
+    Credit_Amount: String
+    Customer_Complaint:String
     Investigation: String
     Action_Taken: String
     Settlement_Date: String
     Settlement_Month: String
+}
+
+type ComplaintAggregate {
+    name: String
+    complaints: [Complaint]
+}
+
+type DashBoard {
+     Complaint_Group: String
+     Dealer_Wise: [ComplaintAggregate]
+     Dealer_City_Wise: [ComplaintAggregate]
+     Model_Wise: [ComplaintAggregate]
+     Complaint_Month_Wise: [ComplaintAggregate]
 }

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     },
 });
 
-function Dashboard() {
+function Dashboard(props) {
     const [cgroupCode, setcgroupCode] = useState(searchConfig.cgroupCode.selected);
     const classes = useStyles();
 
@@ -39,7 +39,7 @@ function Dashboard() {
                 changeFilters={handleFilterChanges}
             ></Search>
             <ComplaintChart data={data.dashboard.Complaint_Month_Wise}></ComplaintChart>
-            <DashBoardGrid data={data.dashboard} />
+            <DashBoardGrid data={data.dashboard} code={cgroupCode} args={props.args}/>
         </div>
     )
 }

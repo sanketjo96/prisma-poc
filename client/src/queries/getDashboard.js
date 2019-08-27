@@ -7,11 +7,12 @@ const DASHBOARDFRAGMENT = gql`
             id
             PCR_Number
             VC_Number
-            Chassis_No
             Dealer_Code_Description
             Dealer_City
             Sale_Month
             Complaint_Month
+            Investigation
+            Action_Taken
         }
     }
 `;

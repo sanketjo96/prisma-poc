@@ -12,7 +12,12 @@ const transformDataForTableRow = (data) => {
     }));
 }
 
-const DashBoardGrid = ({ data }) => {
+const DashBoardGrid = (props) => {
+    const { data, code, args} = props;
+    const onRowClick = (section, rowData) => {
+        args.history.push(`/details/${code}/${section}/${rowData.name}`);
+    };
+
     const grids = gridPaneConfig.map((grid, index) => {
         const ctabledata = transformDataForTableRow(data[grid.name])
         const inputConf = {
@@ -21,7 +26,7 @@ const DashBoardGrid = ({ data }) => {
         };
         return (
             <Grid key={index} item xs={6}>
-                <DataTable tableConfig={inputConf} />
+                <DataTable tableConfig={inputConf} onRowClick={onRowClick}/>
             </Grid>
         )
     });

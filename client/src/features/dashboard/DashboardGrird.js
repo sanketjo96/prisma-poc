@@ -8,7 +8,11 @@ import DataTable from '../../components/DataTable';
 const transformDataForTableRow = (data) => {
     return data.map(item => ({
         name: item.name,
-        complaints: item.complaints.length
+        complaints: item.complaints.length,
+        expense: item.complaints.reduce((acc, complaint) => {
+            acc += parseInt(complaint.Total_Expenses, 10);
+            return acc; 
+        }, 0)
     }));
 }
 
@@ -19,7 +23,8 @@ const DashBoardGrid = (props) => {
     };
 
     const grids = gridPaneConfig.map((grid, index) => {
-        const ctabledata = transformDataForTableRow(data[grid.name])
+        const ctabledata = transformDataForTableRow(data[grid.name]);
+        // console.log(ctabledata);
         const inputConf = {
             ...grid,
             data: ctabledata

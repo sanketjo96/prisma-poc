@@ -7,6 +7,10 @@ const globalConfigs = {
         {
             field: 'complaints',
             title: 'Complaints'
+        },
+        {
+            field: 'expense',
+            title: 'Total Expense (Rs.)'
         }
     ],
 }

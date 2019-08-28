@@ -11,6 +11,7 @@ const DASHBOARDFRAGMENT = gql`
             Dealer_City
             Sale_Month
             Complaint_Month
+            Total_Expenses
             Investigation
             Action_Taken
         }

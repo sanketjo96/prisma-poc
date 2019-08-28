@@ -5,7 +5,7 @@ function groupByHelper(data, key) {
         .groupBy(key)
         .map((value, key) => ({ name: key, complaints: value }))
         .value()
-    ;
+        ;
 }
 
 const resolver = {
@@ -14,12 +14,19 @@ const resolver = {
             return context.prisma.complaints({});
         },
         dashboard(root, args, context) {
-            return context.prisma.complaints({ where: 
-                { 
+            return context.prisma.complaints({
+                where: {
                     Complaint_Group: args.Complaint_Group,
-                    Model_in:  args.models
-                } 
+                    Model_in: args.models
+                }
             });
+        }
+    },
+    Mutation: {
+        deleteComplaint(root, args, context) {
+            return context.prisma.deleteComplaint({
+                    id: args.id
+            })
         }
     },
     DashBoard: {

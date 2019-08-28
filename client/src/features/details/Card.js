@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -27,6 +28,11 @@ const useStyles = makeStyles(theme => ({
     label: {
         fontSize: '13px',
         fontWeight: '700'
+    },
+    icon: {
+        fontSize: 32,
+        textAlign: 'right',
+        cursor: 'pointer'
     }
 }));
 
@@ -38,11 +44,17 @@ const cols = [
     'Dealer_Code_Description',
 ]
 
-const ComplaintCard = ({ data }) => {
+const ComplaintCard = ({ data, onDelete }) => {
     const classes = useStyles();
+    const onComplaintDelete = (index) => {
+        onDelete(data[index].id);
+    };
     return (
-        data.map(item => (
+        data.map((item, index) => (
             <Paper key={`${item.PCR_Number}`} className={classes.root}>
+                <div className={classes.icon} >
+                    <DeleteForeverIcon onClick={() => onComplaintDelete(index)}/>
+                </div>
                 {
                     cols.map(col => {
                         return (

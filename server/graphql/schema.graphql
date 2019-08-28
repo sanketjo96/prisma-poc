@@ -3,6 +3,10 @@ type Query {
     dashboard(Complaint_Group: String, models: [String]): DashBoard
 }
 
+type Mutation {
+    deleteComplaint(id: ID): Complaint
+}
+
 type Complaint {
     id: ID!
     Dealer_Code: String

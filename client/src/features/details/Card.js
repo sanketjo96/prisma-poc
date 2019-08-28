@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
         padding: '1rem',
         margin: '1rem',
         textAlign: 'left',
+        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
         fontSize: '13px'
     },
     heading: {

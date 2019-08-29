@@ -28,6 +28,11 @@ const useStyles = makeStyles(theme => ({
     button: {
         margin: theme.spacing(1),
     },
+    icon: {
+        padding: '0.2rem',
+        fontSize: 20,
+        cursor: 'pointer'
+    }
 }));
 
 const ComplaintNotes = (props) => {
@@ -73,7 +78,7 @@ const ComplaintNotes = (props) => {
         remarkControl = (
             <div>
                 <label className={classes.label}>Remark : </label>{remark}
-                <EditIcon onClick={handleEditToggle} />
+                <EditIcon className={classes.icon} onClick={handleEditToggle} />
             </div>
         )
     }

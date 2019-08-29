@@ -25,14 +25,14 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <ButtonAppBar></ButtonAppBar>
           <Router>
-          <Switch>
-            <Route exact path="/" render={(args) => <Dashboard args={args}></Dashboard>} />
-            <Route exact path="/details/:code/:section/:key" render={(args) => {
-              return <ComplaintCard params={args.match.params}></ComplaintCard> 
-            }}/>
-          </Switch>
+            <ButtonAppBar></ButtonAppBar>
+            <Switch>
+              <Route exact path="/" render={(args) => <Dashboard args={args}></Dashboard>} />
+              <Route exact path="/details/:code/:section/:key" render={(args) => {
+                return <ComplaintCard params={args.match.params}></ComplaintCard> 
+              }}/>
+            </Switch>
           </Router>
       </div>
     </ApolloProvider>

@@ -21,13 +21,6 @@ const useStyles = makeStyles(theme => ({
         fontSize: '13px',
         fontWeight: '700'
     },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-    },
-    button: {
-        margin: theme.spacing(1),
-    },
     icon: {
         padding: '0.2rem',
         fontSize: 20,

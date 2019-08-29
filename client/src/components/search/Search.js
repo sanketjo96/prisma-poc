@@ -13,7 +13,6 @@ const styles = theme => ({
         margin: '10px 0px'
     },
     formControl: {
-        margin: theme.spacing.unit,
         minWidth: 120,
         maxWidth: 300,
     },

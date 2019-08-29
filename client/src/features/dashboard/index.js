@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import Search from '../../components/search/Search';
 import { makeStyles } from '@material-ui/styles';
@@ -41,7 +42,7 @@ function Dashboard(props) {
             {
                 (data && data.dashboard)
                     ? (<ComplaintChart data={data.dashboard.Complaint_Month_Wise}></ComplaintChart>)
-                    : (<Skeleton variant="rect" fullWidth height={250} />)
+                    : (<Skeleton variant="rect" height={250} />)
             }
             <DashBoardGrid data={data.dashboard} code={cgroupCode} args={props.args} />
         </div>

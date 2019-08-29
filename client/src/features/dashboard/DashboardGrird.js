@@ -41,7 +41,7 @@ const DashBoardGrid = (props) => {
                 {
                     inputConf.data.length
                         ? (<DataTable tableConfig={inputConf} onRowClick={onRowClick} />)
-                        : (<Skeleton className={classes.skeleton} variant="rect" height={200} fullWidth />)
+                        : (<Skeleton className={classes.skeleton} variant="rect" height={200}/>)
                 }
             </Grid>
         )

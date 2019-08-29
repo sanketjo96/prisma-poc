@@ -27,6 +27,12 @@ const resolver = {
             return context.prisma.deleteComplaint({
                     id: args.id
             })
+        },
+        updateComplaint(root, args, context) {
+            return context.prisma.updateComplaint({
+                where: {id: args.id},
+                data: {Remark: args.Remark}
+            })
         }
     },
     DashBoard: {

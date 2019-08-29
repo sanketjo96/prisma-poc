@@ -41,4 +41,5 @@ type Complaint {
   Action_Taken: String
   Settlement_Date: String
   Settlement_Month: String
+  Remark: String
 }

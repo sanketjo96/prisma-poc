@@ -4,6 +4,7 @@ type Query {
 }
 
 type Mutation {
+    updateComplaint(id: ID, Remark: String): Complaint
     deleteComplaint(id: ID): Complaint
 }
 
@@ -50,6 +51,7 @@ type Complaint {
     Action_Taken: String
     Settlement_Date: String
     Settlement_Month: String
+    Remark: String
 }
 
 type ComplaintAggregate {

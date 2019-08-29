@@ -7,6 +7,7 @@ import { searchConfig } from '../../config/searchConfig';
 import { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { DASHBOARD_QUERY } from '../../queries/getDashboard';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles({
     root: {
@@ -28,7 +29,6 @@ function Dashboard(props) {
         variables: { Complaint_Group: cgroupCode },
     });
 
-    if (loading) return <div>Fetching</div>;
     if (error) return <div>Error {error}</div>;
 
     return (
@@ -38,8 +38,12 @@ function Dashboard(props) {
                 searchConfig={searchConfig}
                 changeFilters={handleFilterChanges}
             ></Search>
-            <ComplaintChart data={data.dashboard.Complaint_Month_Wise}></ComplaintChart>
-            <DashBoardGrid data={data.dashboard} code={cgroupCode} args={props.args}/>
+            {
+                (data && data.dashboard)
+                    ? (<ComplaintChart data={data.dashboard.Complaint_Month_Wise}></ComplaintChart>)
+                    : (<Skeleton variant="rect" fullWidth height={250} />)
+            }
+            <DashBoardGrid data={data.dashboard} code={cgroupCode} args={props.args} />
         </div>
     )
 }

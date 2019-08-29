@@ -14,6 +14,7 @@ const DASHBOARDFRAGMENT = gql`
             Total_Expenses
             Investigation
             Action_Taken
+            Remark
         }
     }
 `;

@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { useMutation } from '@apollo/react-hooks';
 import { DASHBOARD_QUERY } from '../../queries/getDashboard';
 import { DELETE_COMPLAINT } from '../../queries/deleteComplaint';
+import { UPDATE_COMPLAINT_REMARK } from '../../queries/updateRemark';
 import ComplaintCard from './Card';
 
 const ComplaintDetails = ({ params }) => {
@@ -13,6 +14,8 @@ const ComplaintDetails = ({ params }) => {
     const { loading, error, data } = useQuery(DASHBOARD_QUERY, {
         variables: { Complaint_Group: code },
     });
+
+    const [updateComplaintRemark, updateargs] = useMutation(UPDATE_COMPLAINT_REMARK);
 
     const [deleteComplaint, deletionargs] = useMutation(DELETE_COMPLAINT, {
         update(cache, { data: { deleteComplaint } }) {
@@ -35,6 +38,15 @@ const ComplaintDetails = ({ params }) => {
         }
     });
 
+    const updateRemark = (id, Remark) => {
+        updateComplaintRemark({
+            variables: {
+                id,
+                Remark
+            }
+        })
+    }
+
     if (loading) return <div>loading</div>;
     if (error) return <div>Error {error}</div>;
     const result = data.dashboard[section].find(item => {
@@ -54,6 +66,7 @@ const ComplaintDetails = ({ params }) => {
             <ComplaintCard
                 data={result.complaints}
                 onDelete={handleComplaintDelete}
+                handleRemarkUpdate={updateRemark}
             >
             </ComplaintCard>
         </div>

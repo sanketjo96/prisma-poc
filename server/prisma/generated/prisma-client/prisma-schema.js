@@ -54,6 +54,7 @@ type Complaint {
   Action_Taken: String
   Settlement_Date: String
   Settlement_Month: String
+  Remark: String
 }
 
 type ComplaintConnection {
@@ -105,6 +106,7 @@ input ComplaintCreateInput {
   Action_Taken: String
   Settlement_Date: String
   Settlement_Month: String
+  Remark: String
 }
 
 type ComplaintEdge {
@@ -197,6 +199,8 @@ enum ComplaintOrderByInput {
   Settlement_Date_DESC
   Settlement_Month_ASC
   Settlement_Month_DESC
+  Remark_ASC
+  Remark_DESC
 }
 
 type ComplaintPreviousValues {
@@ -242,6 +246,7 @@ type ComplaintPreviousValues {
   Action_Taken: String
   Settlement_Date: String
   Settlement_Month: String
+  Remark: String
 }
 
 type ComplaintSubscriptionPayload {
@@ -304,6 +309,7 @@ input ComplaintUpdateInput {
   Action_Taken: String
   Settlement_Date: String
   Settlement_Month: String
+  Remark: String
 }
 
 input ComplaintUpdateManyMutationInput {
@@ -348,6 +354,7 @@ input ComplaintUpdateManyMutationInput {
   Action_Taken: String
   Settlement_Date: String
   Settlement_Month: String
+  Remark: String
 }
 
 input ComplaintWhereInput {
@@ -939,6 +946,20 @@ input ComplaintWhereInput {
   Settlement_Month_not_starts_with: String
   Settlement_Month_ends_with: String
   Settlement_Month_not_ends_with: String
+  Remark: String
+  Remark_not: String
+  Remark_in: [String!]
+  Remark_not_in: [String!]
+  Remark_lt: String
+  Remark_lte: String
+  Remark_gt: String
+  Remark_gte: String
+  Remark_contains: String
+  Remark_not_contains: String
+  Remark_starts_with: String
+  Remark_not_starts_with: String
+  Remark_ends_with: String
+  Remark_not_ends_with: String
   AND: [ComplaintWhereInput!]
   OR: [ComplaintWhereInput!]
   NOT: [ComplaintWhereInput!]

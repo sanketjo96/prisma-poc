@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { useMutation } from '@apollo/react-hooks';
 import { DASHBOARD_QUERY } from '../../queries/getDashboard';
@@ -14,6 +15,10 @@ const ComplaintDetails = ({ params }) => {
     const { loading, error, data } = useQuery(DASHBOARD_QUERY, {
         variables: { Complaint_Group: code },
     });
+
+    useEffect(() => {
+        document.documentElement.scrollTop = 0;
+    }, [code]);
 
     const [updateComplaintRemark, updateargs] = useMutation(UPDATE_COMPLAINT_REMARK);
 
